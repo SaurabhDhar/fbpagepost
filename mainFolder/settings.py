@@ -26,7 +26,7 @@ SECRET_KEY = 'v_)bp*3jr@v=-2(*g1l1v1xo+#l5aa2as-)!t*62nbllr#(lc0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://testfacebooksharing.herokuapp.com/']
 
 
 # Application definition
@@ -38,10 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'test_sharing'
-]
-
-MIDDLEWARE = [
+    'test_sharing'https://testfacebooksharing.herokuapp.com/
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
