@@ -13,11 +13,11 @@ def sharing(request):
 
    graph.put_object(parent_object='me', 
                               connection_name='feed',
-                              message='Hello, world') # data yazmaq ucun
+                              message='Hello Guys') # data yazmaq ucun
 
    # context = {
    #    'content': content
    # }
-   
+
     
    return render(request, 'sharing.html')
