@@ -25,7 +25,7 @@ SECRET_KEY = 'v_)bp*3jr@v=-2(*g1l1v1xo+#l5aa2as-)!t*62nbllr#(lc0'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['https://testfacebooksharing.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
