@@ -5,7 +5,7 @@ import json
 
 
 def sharing(request):
-    access_token = 'EAAXtqYRjczYBAImuXn1uvj3UhZB4wl1GQRKZAZBDLl5E1ExCSvcii473vsyuH1A4iI8GRdcjEWbCceZC0uYQmfrcCffZCPzfEZApVnpZAios6xhwS4P0ELc3qpQKcSAWNtiDCGbcAJuqwfaqdwvEElS8CgESPoqRb8lSstHYTHQUSJy3UZBjDf93rxSSvaJHYowZD'
+    access_token = 'EAAEEP5iPQosBAPfGiq7KkHDchEjBwv3zbGlO9wFtQonvT0ccYDHPn0O6qX2XwIDhwczYhAQCmjzmsNEZAzxzVyi0K7UVZBe4yIk1lLGpMR2DbuVjvB0z0wMp27lwgzVTqDcow5lYCWyQRwiUZCbEPQZBlKAdjbgS0UrsuZBWp9i2rjEcnTtJiO3nFcKVp6OUrLuvzVMR0LHPZCt7pRTF70'
     
     graph = facebook.GraphAPI(access_token)
     print(graph)
