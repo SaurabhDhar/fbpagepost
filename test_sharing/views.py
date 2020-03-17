@@ -5,13 +5,16 @@ import json
 
 
 def sharing(request):
-    access_token = 'EAAEEP5iPQosBAKonh85B4kB1nokkM9ZA4wtJq3VfEzrbEdShlcQyWsK2AAMylRRZCqClgz3Fr5I93YyJt3dyvES9ZBWDh9kISpjoe24Ul06PXPzGezhdvBfsaUTQVNxK4D7yZAKPqY8uIPd8SKo26jUOnkWjtOqmufZBKfDQRfk157t6I8cZCTPABmUFaoJroawdpD0T5H12oZC0MBZC3LObZA9hcAX3RMLr33adj5k7OE9SnZCkibsUMi'
+   access_token = 'EAAEEP5iPQosBAOiKZCfA5wK0KTUIg9E2DZAKXCGKbfi8Lpd4q3fZCOrfJmsCLaasQkQTMZAlYlxNfyWNoA3u4iYEzJbSsSHNAUhYhTiXezrbdjsBk0VQOdT3Vi6ZCU5VMCN1jjEbwGpxXGbczJgQrBjLZBeLEicuAyT7mkXGhBXSZBAIUCSZAGdrfe4ZCe5TZChYhNCxgE8m6fuAGdlopp3Uue'
     
-    graph = facebook.GraphAPI(access_token)
-    print(graph)
-    content = graph.get_object('me', fields='name')
-    context = {
-       'content':content
-    }
+   graph = facebook.GraphAPI(access_token)
+   fields = ['name', 'posts']
+   content = graph.get_object('me', fields=fields)
+
+   context = {
+      'name': content['name'],
+      'posts':content['posts']['data']
+   }
+   # content =  graph.put_object(parent_object='me', connection_name='feed',message='Hello, world')
     
-    return render(request, 'sharing.html',context)
+   return render(request, 'sharing.html', context)
