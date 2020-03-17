@@ -4,12 +4,16 @@ import facebook
 
 
 def sharing(request):
-    access_token = 'EAAcGqZCEr6pgBAPZBpL0tNICvrjeCyHZBgwTHMZA4ZAItMrQ9VjMgZAR24m5EDEH32bMpPJba1ZA9dqTnzaZBSPSL5c5VG7VFJtlZAoENYhiFtN8XzqyOMOoJgriCWqPm55JtIwZBJ6xDn8RV8GpNe1sMSNYu513TrU0oAq1IVvmu2sO3NecQ37OWZAjJZBo13eZAt0glQDZCthW1KUBahtFGzyZCRnhpmQbGZB8zH3yY6tpEp4QUvyhe99ZAHOnz'
+    # access_token = 'EAAcGqZCEr6pgBAPZBpL0tNICvrjeCyHZBgwTHMZA4ZAItMrQ9VjMgZAR24m5EDEH32bMpPJba1ZA9dqTnzaZBSPSL5c5VG7VFJtlZAoENYhiFtN8XzqyOMOoJgriCWqPm55JtIwZBJ6xDn8RV8GpNe1sMSNYu513TrU0oAq1IVvmu2sO3NecQ37OWZAjJZBo13eZAt0glQDZCthW1KUBahtFGzyZCRnhpmQbGZB8zH3yY6tpEp4QUvyhe99ZAHOnz'
     
-    if request.method == 'POST':
-        print('Post')
-        fb = facebook.GraphAPI(access_token)
-        print(fb)
-        fb.push_wall_post("This is test post by python...")
-    
-    return render(request, 'sharing.html')
+    # if request.method == 'POST':
+    #     print('Post')
+    #     fb = facebook.GraphAPI(access_token)
+    #     print(fb)
+    #     fb.push_wall_post("This is test post by python...")
+    context = {
+        'test': "Salam"
+    }
+    if request.method == "POST":
+        
+        return render(request, 'sharing.html', context)
