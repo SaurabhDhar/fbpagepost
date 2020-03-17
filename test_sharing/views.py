@@ -5,11 +5,13 @@ import json
 
 
 def sharing(request):
-    access_token = 'EAAEEP5iPQosBAA0I1jJ7aSVY4OL7hZBM0kTugRJM4c428ZCUUkfLY3uhxSkRpNo2txzV6ZCXP0IqJK7OYAtf72W45tBmPdQBX07P5Hv3QbY5UQz1HoVoGtTC54MzBPIWKchnyd7TPqAIobTi782gs1VNBE5GtPdRBo37BITlxwymmCyIW57fIFVa4ggWGT6uxsjKDyKyZCYaz9FMWyt5'
+    access_token = 'EAAEEP5iPQosBAKonh85B4kB1nokkM9ZA4wtJq3VfEzrbEdShlcQyWsK2AAMylRRZCqClgz3Fr5I93YyJt3dyvES9ZBWDh9kISpjoe24Ul06PXPzGezhdvBfsaUTQVNxK4D7yZAKPqY8uIPd8SKo26jUOnkWjtOqmufZBKfDQRfk157t6I8cZCTPABmUFaoJroawdpD0T5H12oZC0MBZC3LObZA9hcAX3RMLr33adj5k7OE9SnZCkibsUMi'
     
     graph = facebook.GraphAPI(access_token)
     print(graph)
-    graph.put_object(parent_object='me', connection_name='feed',
-                  message='Hello, world')
+    content = graph.get_object('me', fields='name')
+    context = {
+       'content':content
+    }
     
-    return render(request, 'sharing.html')
+    return render(request, 'sharing.html',context)
