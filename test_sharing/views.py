@@ -9,7 +9,6 @@ def sharing(request):
     
     graph = facebook.GraphAPI(access_token)
     print(graph)
-    graph.put_object(parent_object='me', connection_name='feed',
-                  message='Hello, world')
-    
-    return render(request, 'sharing.html',context)
+    content = graph.get_object(id='me', fields=['id','name'])
+    print(content)
+    return render(request, 'sharing.html')
