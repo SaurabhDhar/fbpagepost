@@ -10,7 +10,9 @@ def sharing(request):
    graph = facebook.GraphAPI(access_token)
    
    if request.method == 'POST':
-      content = request.POST.get('post')
+
+      content = request.POST.get('content')
+
       graph.put_object(parent_object='me', 
                            connection_name='feed',
                               message=content) # data yazmaq ucun
