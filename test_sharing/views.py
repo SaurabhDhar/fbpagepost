@@ -12,8 +12,7 @@ def sharing(request):
    content = graph.get_object('me', fields=fields)
 
    context = {
-      'name': content['name'],
-      'posts':content['posts']['data']
+      'content': content
    }
    # content =  graph.put_object(parent_object='me', connection_name='feed',message='Hello, world')
     
