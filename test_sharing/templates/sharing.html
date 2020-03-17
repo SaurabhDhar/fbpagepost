@@ -6,8 +6,12 @@
     <title>Document</title>
 </head>
 <body>
-   <h1>Success</h1>
-   
+   <h1>Facebook Share Test</h1>
+   <form action="" method="POST">
+    {% csrf_token %}
+    <input type="text" value="post">
+    <button type="submit">Share</button>
+   </form>
    
 </body>
 </html>
