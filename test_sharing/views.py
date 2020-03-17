@@ -12,7 +12,7 @@ def sharing(request):
         
         fields = ['id', 'name']
 
-        profile = graph.get_object('me', fields=fields)
+        profile = graph.put_object(parent_object="me", "feed", message = "Hello World")
         print(profile)
         
     return render(request, 'sharing.html')
