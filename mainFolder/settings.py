@@ -38,7 +38,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'test_sharing'
+    'test_sharing',
+    'social_django'
+]
+
+AUTHENTICATION_BACKENDS = [
+    'social_core.backends.facebook.FacebookOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
 ]
 
 MIDDLEWARE = [
@@ -115,6 +121,36 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'home'
+LOGOUT_URL = 'logout'
+LOGOUT_REDIRECT_URL = 'login'
+
+
+SOCIAL_AUTH_FACEBOOK_KEY ='226203478502236'       
+SOCIAL_AUTH_FACEBOOK_SECRET = 'b4e703de4a7e929299d743c29bb3b745'
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['user_link', 
+                            'email', 
+                            'manage_pages', 
+                            'pages_show_list', 
+                            'publish_pages', 
+                            'publish_to_groups', 
+                            'public_profile',
+                            'feed']
+SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {       
+  'fields': ['id', 
+            'name', 
+            'email', 
+            'picture.type(large)', 
+            'link'],
+}
+SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 
+    ('name', 'name'),
+    ('email', 'email'),
+    ('picture', 'picture'),
+    ('link', 'profile_url'),
+]
+SESSION_COOKIE_SECURE=False 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -127,5 +163,6 @@ else:
         os.path.join(BASE_DIR, "static")
     ]
     
+
 
 django_heroku.settings(locals())
