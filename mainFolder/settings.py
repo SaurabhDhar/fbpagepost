@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'test_sharing', 
+    'test_sharing',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
@@ -133,30 +133,30 @@ LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 
 
-# SOCIAL_AUTH_FACEBOOK_KEY ='226203478502236'       
+# SOCIAL_AUTH_FACEBOOK_KEY ='226203478502236'
 # SOCIAL_AUTH_FACEBOOK_SECRET = 'b4e703de4a7e929299d743c29bb3b745'
-# SOCIAL_AUTH_FACEBOOK_SCOPE = ['user_link', 
-#                             'email', 
-#                             'manage_pages', 
-#                             'pages_show_list', 
-#                             'publish_pages', 
+# SOCIAL_AUTH_FACEBOOK_SCOPE = ['user_link',
+#                             'email',
+#                             'manage_pages',
+#                             'pages_show_list',
+#                             'publish_pages',
 #                             'public_profile',
 #                             'feed']
-# SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {       
-#   'fields': ['id', 
-#             'name', 
+# SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
+#   'fields': ['id',
+#             'name',
 #             'email',
-#             'publish_to_groups', 
-#             'picture.type(large)', 
+#             'publish_to_groups',
+#             'picture.type(large)',
 #             'link'],
 # }
-# SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 
+# SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
 #     ('name', 'name'),
 #     ('email', 'email'),
 #     ('picture', 'picture'),
 #     ('link', 'profile_url'),
 # ]
-# SESSION_COOKIE_SECURE=False 
+# SESSION_COOKIE_SECURE=False
 
 SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
@@ -189,13 +189,13 @@ SOCIALACCOUNT_PROVIDERS = {
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-if not DEBUG:
-    STATIC_ROOT = os.path.join(BASE_DIR, "static")
-else:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static")
-    ]
-    
+# if not DEBUG:
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+# else:
+#     STATICFILES_DIRS = [
+#         os.path.join(BASE_DIR, "static")
+#     ]
+
 SITE_ID = 1
 
 django_heroku.settings(locals())
