@@ -34,8 +34,7 @@ ALLOWED_HOSTS = ['*']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
-    # 'django.contrib.sites',
-    'django.contrib.sites.models.Site',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
@@ -197,6 +196,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 #         os.path.join(BASE_DIR, "static")
 #     ]
 
-SITE_ID = 1
+# SITE_ID = 1
 
 django_heroku.settings(locals())
