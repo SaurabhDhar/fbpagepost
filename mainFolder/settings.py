@@ -24,9 +24,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'v_)bp*3jr@v=-2(*g1l1v1xo+#l5aa2as-)!t*62nbllr#(lc0'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['https://testfacebooksharing.herokuapp.com/']
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -34,17 +34,23 @@ ALLOWED_HOSTS = ['https://testfacebooksharing.herokuapp.com/']
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
+    'django.contrib.sites',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'test_sharing',
-    'social_django'
+    'test_sharing', 
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    'allauth.socialaccount.providers.facebook'
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.facebook.FacebookOAuth2',
+    # 'social_core.backends.facebook.FacebookOAuth2',
     'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend'
+
 ]
 
 MIDDLEWARE = [
@@ -127,30 +133,57 @@ LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 
 
-SOCIAL_AUTH_FACEBOOK_KEY ='226203478502236'       
-SOCIAL_AUTH_FACEBOOK_SECRET = 'b4e703de4a7e929299d743c29bb3b745'
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['user_link', 
-                            'email', 
-                            'manage_pages', 
-                            'pages_show_list', 
-                            'publish_pages', 
-                            'publish_to_groups', 
-                            'public_profile',
-                            'feed']
-SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {       
-  'fields': ['id', 
-            'name', 
-            'email', 
-            'picture.type(large)', 
-            'link'],
+# SOCIAL_AUTH_FACEBOOK_KEY ='226203478502236'       
+# SOCIAL_AUTH_FACEBOOK_SECRET = 'b4e703de4a7e929299d743c29bb3b745'
+# SOCIAL_AUTH_FACEBOOK_SCOPE = ['user_link', 
+#                             'email', 
+#                             'manage_pages', 
+#                             'pages_show_list', 
+#                             'publish_pages', 
+#                             'public_profile',
+#                             'feed']
+# SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {       
+#   'fields': ['id', 
+#             'name', 
+#             'email',
+#             'publish_to_groups', 
+#             'picture.type(large)', 
+#             'link'],
+# }
+# SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 
+#     ('name', 'name'),
+#     ('email', 'email'),
+#     ('picture', 'picture'),
+#     ('link', 'profile_url'),
+# ]
+# SESSION_COOKIE_SECURE=False 
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        'METHOD': 'oauth2',
+        'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
+        'SCOPE': ['email', 'public_profile', 'user_friends','manage_pages'],
+        'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
+        'INIT_PARAMS': {'cookie': False},
+        'FIELDS': [
+            'id',
+            'email',
+            'name',
+            'first_name',
+            'last_name',
+            'verified',
+            'locale',
+            'timezone',
+            'link',
+            'gender',
+            'updated_time',
+        ],
+        'EXCHANGE_TOKEN': True,
+        'LOCALE_FUNC': 'path.to.callable',
+        'VERIFIED_EMAIL': False,
+        'VERSION': 'v2.12',
+    }
 }
-SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [                 
-    ('name', 'name'),
-    ('email', 'email'),
-    ('picture', 'picture'),
-    ('link', 'profile_url'),
-]
-SESSION_COOKIE_SECURE=False 
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
@@ -163,6 +196,6 @@ else:
         os.path.join(BASE_DIR, "static")
     ]
     
-
+SITE_ID = 1
 
 django_heroku.settings(locals())

@@ -1,12 +1,10 @@
-{% extends 'base.html' %}
-{% block title %} Sign in {% endblock %}
-{% block content %}
-<div class="row">
-    <div class="col-md-8 mx-auto social-container my-2 order-md-1">
-        <button class="btn btn-primary mb-2">
-            <a href="{% url 'social:begin' 'facebook' %}">Login with Facebook</a>
-        </button>
-    </div>
-</div>
-</div>
-{% endblock %}
+{% load socialaccount %}
+<html>
+    <head>
+        <title>Register</title>
+    </head>
+    <body>
+        <h1>Salam</h1>
+        <a href="{% provider_login_url 'facebook' method='oauth2' %}">Facebook account</a>
+    </body>
+</html>

@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import sharing,login,home
+from .views import login,home,sharing
 from django.contrib.auth import views as auth_views
 
 urlpatterns = [
