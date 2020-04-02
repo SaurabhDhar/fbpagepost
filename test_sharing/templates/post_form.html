@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+{% load static %}
+{% load widget_tweaks %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<form >
+
+</form>
+
+<textarea name="DSC" id="" cols="30" rows="10"></textarea>
+
+{{ form.media }}
+<input type="submit"/>
+
+<script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/17.0.0/classic/ckeditor.js"></script>
+
+<script src="{% static 'mysite/js/ajax.js' %}"></script>
+
+
+<script>
+
+
+
+    CKEDITOR.replace('DSC');
+    var timer;
+    var timeout = 5000; // Timeout duration
+    CKEDITOR.instances.DSC.on('key', function (e) {
+        var self = this;
+        if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(saveData, timeout);
+    });
+
+
+    $(document).ready(function () {
+
+        $('#submit').click(function () {
+            saveData();
+        });
+    });
+
+var post_id = 'none'
+    // Save data
+    function saveData() {
+
+        var content =  CKEDITOR.instances['DSC'].getData();
+
+
+
+
+        if (content) {
+            // AJAX request
+            $.ajax({
+                url: "{% url 'add_post' %}",
+                method: "POST",
+                data: {
+                    content: content,
+                    postid: post_id,
+                    csrfmiddlewaretoken: "{{ csrf_token }}"
+                },
+                success: function (data) {
+                    {#$('#postid').val(response);#}
+
+                    if (data.id) {
+                        post_id = data.id
+                        console.log(post_id)
+                    } else {
+                        console.log(data)
+                    }
+                },
+                error: function (xhr, err, msg) {
+                    console.log(xhr, err, msg);
+                }
+            });
+        }
+
+    }
+</script>
+</body>
+</html>

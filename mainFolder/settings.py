@@ -40,11 +40,23 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'test_sharing',
+    'ckeditor',
+    'ckeditor_uploader',
+    'widget_tweaks',
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.facebook'
 ]
+CKEDITOR_UPLOAD_PATH = 'uploads/'
+CKEDITOR_CONFIGS = {
+    'default':{
+        'toolbar':'Custom',
+        'height':500,
+
+    }
+}
+CKEDITOR_IMAGE_BACKEND = 'pillow'
 
 AUTHENTICATION_BACKENDS = [
     # 'social_core.backends.facebook.FacebookOAuth2',
@@ -128,7 +140,7 @@ USE_L10N = True
 USE_TZ = True
 
 LOGIN_URL = 'login'
-LOGIN_REDIRECT_URL = 'home'
+LOGIN_REDIRECT_URL = 'add_post'
 LOGOUT_URL = 'logout'
 LOGOUT_REDIRECT_URL = 'login'
 
@@ -162,7 +174,8 @@ SOCIALACCOUNT_PROVIDERS = {
     'facebook': {
         'METHOD': 'oauth2',
         'SDK_URL': '//connect.facebook.net/{locale}/sdk.js',
-        'SCOPE': ['email', 'public_profile', 'user_friends','manage_pages'],
+        'SCOPE': ['email', 'public_profile', 'user_friends','manage_pages','publish_pages',
+'publish_to_groups'],
         'AUTH_PARAMS': {'auth_type': 'reauthenticate'},
         'INIT_PARAMS': {'cookie': False},
         'FIELDS': [
@@ -189,13 +202,16 @@ SOCIALACCOUNT_PROVIDERS = {
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
 
 STATIC_URL = '/static/'
-# if not DEBUG:
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
-# else:
-#     STATICFILES_DIRS = [
-#         os.path.join(BASE_DIR, "static")
-#     ]
+if not DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, "static")
+else:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static")
+    ]
 
-# SITE_ID = 1
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+SITE_ID = 1
 
 django_heroku.settings(locals())

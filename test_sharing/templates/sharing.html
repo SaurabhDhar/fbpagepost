@@ -7,19 +7,19 @@
 </head>
 <body>
    <h1>Facebook Share Username:{{request.user}}</h1>
+
    <form action="" method="POST">
     {% csrf_token %}
-    <input type="text" name='content' value=""><br>
-   
+
     {% for i in data %}
     {{i.token}}
     <input type="checkbox" name="pages" value ="{{i.access_token}}">
     <label for="{{ i.id_for_label }}">{{i.name}}</label><br>
     {% endfor %}
-    
-    
+
+
     <button type="submit">Share</button>
    </form>
-   
+
 </body>
 </html>
