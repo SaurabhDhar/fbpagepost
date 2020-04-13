@@ -72,6 +72,12 @@ def sharing(request):
 
          graph.put_object(parent_object='203694849725749',
                         connection_name='feed',
-                        message=strip_tags(content)) # data yazmaq ucun
+                        message='<p><strong>Salam</strong></p>') # data yazmaq ucun
 
    return render(request, 'sharing.html',context)
+
+
+
+def handler404(request):
+
+    return render(request, '404.html')
