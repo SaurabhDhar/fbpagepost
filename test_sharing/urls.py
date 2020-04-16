@@ -1,8 +1,8 @@
 from django.urls import path
-from .views import login,sharing,add_post,
+# from .views import login,sharing,add_post,
 from django.contrib.auth import views as auth_views
 # from django.conf.urls import handler404
-
+from .views import sharing
 urlpatterns = [
     path('sharing/',sharing,name='home'),
     # path("login/", login, name="login"),
