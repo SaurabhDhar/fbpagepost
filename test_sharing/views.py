@@ -49,8 +49,8 @@ def add_post(request):
 @login_required
 def sharing(request):
 
-   sosial = SocialToken.objects.filter(account = 3).last()
-   social_user = SocialAccount.objects.filter(user=4).last()
+   sosial = SocialToken.objects.filter(account = 4).last()
+   social_user = SocialAccount.objects.filter(user=5).last()
    print(social_user)
    user_id = social_user.uid
    user_token = sosial.token
