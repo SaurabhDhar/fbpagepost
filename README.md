@@ -1,3 +1,5 @@
+PS : This repo isn't written by me, this is just for a quote purpose.
+
 For now we are waiting only backend job to be done.
 Front-end part can be simple forms.
 
